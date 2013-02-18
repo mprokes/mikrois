@@ -1,0 +1,31 @@
+<h1>IC: <%= @ic %></h1>
+<h2>ARES</h2>
+<div>Nazev: <%= @ares_reg.name %></div>
+<div>Plátce DPH: <%= @ares_reg.cz_payer? ? 'ANO' : 'NE'  %>
+<% if @ares_reg.cz_payer? %>
+    <% if @ares_reg.cz_payer == 'A' %>
+        Individuální dič: CZ<%= @ares_reg.dic %>
+    <% elsif @ares_reg.cz_payer == 'S'  %>
+        Skupinové dič: <%= @ares_reg.dic %>
+    <% end %>
+<% end %>
+
+<% if @ares_reg.reg_insolv %>
+  <div class="warn">Pro subjekt existuje záznam v Insolvenčním rejstříku</div>
+<% end %>
+<% if @ares_reg.reg_upadce %>
+      <div class="warn">Subjekt je v registru Centrální evidence úpadců</div>
+<% end %>
+<div>Data z ministerstva k: <%= @ares_reg.actual_at %></div>
+</div>
+
+<% if @ares_reg.cz_payer? %>
+<h2>ADIS</h2>
+<div>Nespolehlivý plátce: <%= @adis_reg.listed_unreliable_status %></div>
+<% if @adis_reg.listed_unreliable_status %>
+    <div class="warn">Subjekt je evidován jako nespolehlivý plátce DPH</div>
+<% end %>
+<div>Data z ministerstva k: <%= @adis_reg.actual_at %></div>
+<% end %>
+
+
