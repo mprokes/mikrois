@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130216201427) do
+ActiveRecord::Schema.define(:version => 20130218054053) do
 
   create_table "adis_registrations", :force => true do |t|
     t.integer  "dic"
@@ -43,6 +43,13 @@ ActiveRecord::Schema.define(:version => 20130216201427) do
     t.string   "password_digest"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+  end
+
+  create_table "watchdogs", :force => true do |t|
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+    t.integer  "user_id"
+    t.integer  "ares_registration_id"
   end
 
 end

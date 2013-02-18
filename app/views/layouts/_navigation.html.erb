@@ -1,0 +1,22 @@
+<%= link_to "Mikrois", root_path, :class => 'brand' %>
+<ul class="nav">
+
+  <% if current_user %>
+      <li>
+        <%= link_to 'Přehled', vats_list_path %>
+      </li>
+      <li>
+        <%= link_to("Logout #{current_user.email}", log_out_path) %>
+      </li>
+  <% else %>
+      <li>
+        <%= link_to('Login', log_in_path)  %>
+      </li>
+  <% end %>
+  <% unless current_user %>
+      <li>
+        <%= link_to('Sign up', sign_up_path)  %>
+      </li>
+  <% end %>
+</ul>
+

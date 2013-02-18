@@ -1,5 +1,5 @@
 class AresRegistration < ActiveRecord::Base
-  attr_accessible :cz_payer, :ic, :name, :vat_number, :downloaded_at, :actual_at, :reg_insolv, :reg_upadce
+  attr_accessible :cz_payer, :name, :vat_number, :ic, :downloaded_at, :actual_at, :reg_insolv, :reg_upadce
   after_initialize :init
 
   XML_PATH = 'db/xml/ares'

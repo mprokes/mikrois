@@ -1,5 +1,19 @@
-<h1>Zadejte IČ hledaného subjektu</h1>
-<form>
-  <input name="ic">
-  <input type="submit">
-</form>
+# encoding: UTF-8
+<div class="hero-unit">
+  <h1>Zadejte IC firmy k prověření</h1>
+  <p>Tagline</p>
+
+    <%= form_tag vats_path do |f| %>
+    <a class="btn btn-primary btn-large">
+
+          <input name="id" placeholder="Zadejte ič k ověření">
+          <%= submit_tag :Ověřit %>
+
+    </a>
+      <% end %>
+
+</div>
+
+
+
+

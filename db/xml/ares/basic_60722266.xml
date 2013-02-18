@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<are:Ares_odpovedi xmlns:are="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_answer_basic/v_1.0.3" xmlns:D="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_datatypes/v_1.0.3" xmlns:U="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/uvis_datatypes/v_1.0.3" odpoved_datum_cas="2013-02-16T19:42:19" odpoved_pocet="1" odpoved_typ="Basic" vystup_format="XML" xslt="klient" validation_XSLT="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_odpovedi.xsl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_answer_basic/v_1.0.3 http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_answer_basic/v_1.0.3/ares_answer_basic_v_1.0.3.xsd" Id="ares">
+<are:Odpoved>
+<D:PID>0</D:PID>
+<D:VH>
+<D:K>1</D:K>
+</D:VH>
+<D:PZA>1</D:PZA>
+<D:UVOD>
+<D:ND>Výpis z dat Registru ARES - aktuální stav ke dni 2013-02-15</D:ND>
+<D:ADB>2013-02-15</D:ADB>
+<D:DVY>2013-02-16</D:DVY>
+<D:CAS>19:42:21</D:CAS>
+<D:Typ_odkazu>0</D:Typ_odkazu>
+</D:UVOD>
+<D:VBAS>
+<D:ICO zdroj="OR">60722266</D:ICO>
+<D:DIC zdroj="DPH">CZ60722266</D:DIC>
+<D:OF zdroj="OR">Faster CZ spol. s r.o.</D:OF>
+<D:DV>1994-09-22</D:DV>
+<D:PF zdroj="OR">
+<D:KPF>112</D:KPF>
+<D:NPF>Společnost s ručením omezeným</D:NPF>
+</D:PF>
+<D:AD zdroj="ARES">
+<D:UC>Obřanská 940</D:UC>
+<D:PB>61400 Brno</D:PB>
+</D:AD>
+<D:AA zdroj="ARES">
+<D:IDA>200587512</D:IDA>
+<D:KS>203</D:KS>
+<D:NS>Česká republika</D:NS>
+<D:N>Brno</D:N>
+<D:NCO>Maloměřice</D:NCO>
+<D:NU>Obřanská</D:NU>
+<D:CD>940</D:CD>
+<D:TCD>1</D:TCD>
+<D:CO>60</D:CO>
+<D:PSC>61400</D:PSC>
+<D:AU>
+<U:KOL>60</U:KOL>
+<U:KK>116</U:KK>
+<U:KOK>3702</U:KOK>
+<U:KO>582786</U:KO>
+<U:KCO>490377</U:KCO>
+<U:KMC>551252</U:KMC>
+<U:PSC>61400</U:PSC>
+<U:KUL>28975</U:KUL>
+<U:CD>940</U:CD>
+<U:TCD>1</U:TCD>
+<U:CO>60</U:CO>
+<U:KA>19451539</U:KA>
+<U:KOB>19267819</U:KOB>
+<U:PCD>673837</U:PCD>
+</D:AU>
+</D:AA>
+<D:PSU>NAAANANNNNANNNNNNNNNNNNNANNNNN</D:PSU>
+<D:ROR>
+<D:SZ>
+<D:SD>
+<D:K>7</D:K>
+<D:T>Krajský soud v Brně</D:T>
+</D:SD>
+<D:OV>C 16631</D:OV>
+</D:SZ>
+<D:SOR>
+<D:SSU>Aktivní</D:SSU>
+<D:KKZ>
+<D:K>0</D:K>
+</D:KKZ>
+<D:VY>
+<D:K>0</D:K>
+</D:VY>
+<D:ZAM>
+<D:K>0</D:K>
+</D:ZAM>
+<D:LI>
+<D:K>0</D:K>
+</D:LI>
+</D:SOR>
+</D:ROR>
+<D:RRZ>
+<D:ZU>
+<D:KZU>370200</D:KZU>
+<D:NZU>Magistrát města Brna</D:NZU>
+</D:ZU>
+<D:FU>
+<D:KFU>290</D:KFU>
+<D:NFU>Brno III</D:NFU>
+</D:FU>
+</D:RRZ>
+<D:KPP zdroj="RES">20 - 24 zaměstnanci</D:KPP>
+<D:Nace>
+<D:NACE zdroj="RES">61104</D:NACE>
+<D:NACE zdroj="RES">4778</D:NACE>
+<D:NACE zdroj="RES">620</D:NACE>
+<D:NACE zdroj="RES">63</D:NACE>
+<D:NACE zdroj="RES">702</D:NACE>
+<D:NACE zdroj="RES">711</D:NACE>
+<D:NACE zdroj="RES">95110</D:NACE>
+<D:NACE zdroj="RES">952</D:NACE>
+</D:Nace>
+<D:PPI>
+<D:PP zdroj="OR">
+<D:T>
+výroba, obchod a služby neuvedené v přílohách 1 až 3 živnostenského
+zákona
+</D:T>
+<D:T>
+výroba, instalace, opravy elektrických strojů a přístrojů, elektronických
+a telekomunikačních zařízení
+</D:T>
+<D:T>
+podnikání v elektronických  komunikacích:
+a) veřejná pevná síť elektronických komunikací
+b) veřejně dostupná telefonní služba
+c) ostatní hlasové služby
+d) pronájem okruhů
+e) služby přístupu k síti Internet
+</D:T>
+</D:PP>
+<D:PP zdroj="RZP">
+<D:T>Výroba, obchod a služby neuvedené v přílohách 1 až 3 živnostenského zákona</D:T>
+<D:T>Výroba, instalace, opravy elektrických strojů a přístrojů, elektronických a telekomunikačních zařízení</D:T>
+</D:PP>
+</D:PPI>
+<D:Obory_cinnosti>
+<D:Obor_cinnosti>
+<D:K>Z01048</D:K>
+<D:T>Velkoobchod a maloobchod</D:T>
+</D:Obor_cinnosti>
+<D:Obor_cinnosti>
+<D:K>Z01056</D:K>
+<D:T>Poskytování software, poradenství v oblasti informačních technologií, zpracování dat, hostingové a související činnosti a webové portály</D:T>
+</D:Obor_cinnosti>
+<D:Obor_cinnosti>
+<D:K>Z01060</D:K>
+<D:T>Poradenská a konzultační činnost, zpracování odborných studií a posudků</D:T>
+</D:Obor_cinnosti>
+</D:Obory_cinnosti>
+</D:VBAS>
+</are:Odpoved>
+</are:Ares_odpovedi>
