@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class UsersController < ApplicationController
   def new
     @user = User.new
@@ -5,11 +6,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      flash[:notice] = "You Signed up successfully"
-      flash[:color]= "valid"
+      flash[:notice] = "Registrace byla úspěšná"
     else
-      flash[:notice] = "Form is invalid"
-      flash[:color]= "invalid"
+      flash[:notice] = "Údaje jsou neplatné"
     end
     render "new"
   end

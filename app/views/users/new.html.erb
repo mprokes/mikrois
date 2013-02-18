@@ -1,9 +1,13 @@
-<h1>Sign Up</h1>
+<div class="page-header">
+  <h1>Zaregistrujte se
+    <small> stačí se jednou podívat a už vám nic neunikne</small>
+  </h1>
+</div>
 
 <%= form_for @user do |f| %>
     <% if @user.errors.any? %>
         <div class="error_messages">
-          <h2>Form is invalid</h2>
+          <h2>Registrace se nezdařila</h2>
           <ul>
             <% @user.errors.full_messages.each do |message| %>
                 <li><%= message %></li>
@@ -12,16 +16,13 @@
         </div>
     <% end %>
     <p>
-      <%= f.label :email %><br />
-      <%= f.text_field :email %>
+      <%= f.text_field :email, :placeholder => 'Emailová adresa' %>
     </p>
     <p>
-      <%= f.label :password %><br />
-      <%= f.password_field :password %>
+      <%= f.password_field :password, :placeholder => 'Heslo' %>
     </p>
     <p>
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation %>
+      <%= f.password_field :password_confirmation, :placeholder => 'Heslo ještě jednou' %>
     </p>
-    <p class="button"><%= f.submit %></p>
+    <p class="button"><%= submit_tag 'Zaregistrovat se' %></p>
 <% end %>

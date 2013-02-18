@@ -4,19 +4,16 @@ class VatsController < ApplicationController
 
   def index
     @ic = params[:id]
-    puts @ic
     if @ic
       redirect_to :action => :show, :id => @ic
     end
 
     @audits = Audit.all
-
-
   end
 
   def list
     authorize
-    @alist = current_user ? current_user.ares_registrations.recent : []
+    @alist = current_user.ares_registrations.recent rescue []
   end
 
 

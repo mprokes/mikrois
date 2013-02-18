@@ -7,11 +7,9 @@ class AresRegistration < ActiveRecord::Base
   after_initialize :init
   before_save :before_save
 
-
   scope :recent, where("actual_at IS NOT NULL").order("reg_insolv DESC, reg_upadce DESC, updated_at DESC")
 
   CACHE_ENABLED = false
-
   XML_PATH = 'db/xml/ares'
 
   ARES_VERSION="1.0.3"
@@ -29,15 +27,18 @@ class AresRegistration < ActiveRecord::Base
   ZKR_NAZEV_ULICE='NU'
 
   def init
-    if self.downloaded_at.nil?
-      parseXml(downloadXml)
+    if downloaded_at.nil?
+      parse_xml download_xml
     end
   end
 
   def before_save
+
+    # if not listed in ARES, dont try redownload before 1 month
     if self.name.nil?
       self.downloaded_at.advance(:month => +1)
     end
+
   end
 
   def cz_payer?
@@ -49,16 +50,14 @@ class AresRegistration < ActiveRecord::Base
     cz_payer? ? AdisRegistration.find_by_dic(dic) : nil
   end
 
-  def updateFromNet
-    parseXml(downloadXml) if self.downloaded_at.nil?
+  def update_from_net
+    parse_xml download_xml if self.downloaded_at.nil?
   end
 
 
-  def downloadXml
-
+  def download_xml
     filename = XML_PATH+'/basic_'+ic.to_s+".xml"
 
-    # TODO: Uplne pryc cache, ale hlidat limity
     unless CACHE_ENABLED and File.exists?(filename)
       puts "Downloading ic #{ic.to_s} from ARES registr"
       File.open(filename, 'w') do |f|
@@ -74,7 +73,7 @@ class AresRegistration < ActiveRecord::Base
     Nokogiri::XML(File.open(filename)) if File.exists?(filename)
   end
 
-  def parseXml(doc)
+  def parse_xml(doc)
     doc.xpath("/are:Ares_odpovedi/are:Odpoved/D:"+ZKR_VYPIS_BASIC, 'are'=>ARE_XMLNS, "D"=>DTT_XMLNS).each do |answer|
       logger.debug('answer '+answer.xpath("D:ICO").first.content)
 

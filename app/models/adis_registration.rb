@@ -10,20 +10,19 @@ class AdisRegistration < ActiveRecord::Base
   ADIS_URI = 'http://adisreg.mfcr.cz/cgi-bin/adis/idph/int_dp_prij.cgi?id=1&pocet=1&fu=&OK=+Search+&ZPRAC=RDPHI1&dic='
 
   def init
-    if self.downloaded_at.nil?
-      parseHtml(downloadHtml)
-      self.save
+    if downloaded_at.nil?
+      update_from_net
+      save
     end
   end
 
-  def updateFromNet
-    parseHtml(downloadHtml)
+  def update_from_net
+    parse_html download_html
   end
 
-  def downloadHtml
-    filename = XML_PATH+'/CZ'+dic.to_s+".html"
+  def download_html
+    filename = XML_PATH+'/CZ'+dic.to_s+'.html'
 
-    # TODO: Uplne pryc cache, ale hlidat limity
     unless CACHE_ENABLED and File.exists?(filename)
       puts "Downloading dic "+dic.to_s+" from ADIS registr"
       File.open(filename, 'w') do |f|
@@ -39,7 +38,7 @@ class AdisRegistration < ActiveRecord::Base
     Nokogiri::HTML(File.open(filename),nil,'utf-8') if File.exists?(filename)
   end
 
-  def parseHtml(doc)
+  def parse_html(doc)
     if m = /Nespolehlivý plátce:(.*)od:(.*)datum zveřejnění:([^\n]*)/mi.match(doc.text)
       self.listed_unreliable_status = m[1].strip!
       self.listed_at = m[2].strip!

@@ -1,3 +1,9 @@
+<div class="page-header">
+  <h1>Přehled kontrolovaných firem
+    <small> Tyto firmy pro vás hlídáme</small>
+  </h1>
+</div>
+
 <%= form_tag vats_path do |f| %>
     <a class="btn btn-primary btn-large">
 
@@ -7,13 +13,15 @@
     </a>
 <% end %>
 
-<h1>Přehled kontrolovaných firem</h1>
-<table class="table table-striped table-hover table-condensed">
-  <tr><th>Název</th><th>plátce</th><th>insolvence</th><th>nespolehlivý</th></tr>
+<table class="table table-striped table-hover">
+  <tr><th>Název</th><th>Je plátce daně?</th><th>V insolvenčním rejstříku?</th><th>V registru nespolehlivých plátců daně?</th></tr>
 
 <% @alist.each do |a| %>
 <tr class="<%= :error if (a.reg_insolv or (a.reg_adis and a.reg_adis.listed_unreliable_status) ) %>">
-  <td><%= link_to a.name, vat_path(a.ic)  %></td><td><%= a.cz_payer? %></td><td><%= a.reg_insolv  %></td><td><%= a.reg_adis.listed_unreliable_status rescue '-' %></td>
+  <td><%= link_to a.name, vat_path(a.ic)  %></td>
+  <td><%= a.cz_payer? ? 'Ano' : 'Ne' %></td>
+  <td><%= a.reg_insolv? ? 'Ano' : 'Ne'  %></td>
+  <td><%= a.reg_adis.listed_unreliable_status? ? 'Ano' : 'Ne' rescue '-' %></td>
 </tr>
 <% end  %>
 </table>

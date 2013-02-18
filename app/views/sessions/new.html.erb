@@ -1,13 +1,17 @@
-<h1>Log in</h1>
+<div class="page-header">
+  <h1>Přihlásit se
+    <small> </small>
+  </h1>
+</div>
 
 <%= form_tag sessions_path do %>
     <p>
       <%= label_tag :email %><br />
-      <%= text_field_tag :email, params[:email] %>
+      <%= text_field_tag :email, params[:email], :placeholder => 'Emailová adresa' %>
     </p>
     <p>
-      <%= label_tag :password %><br />
-      <%= password_field_tag :password %>
+      <%= label_tag 'Heslo' %><br />
+      <%= password_field_tag :password, :placeholder => 'Heslo' %>
     </p>
-    <p class="button"><%= submit_tag "Log in" %></p>
+    <p class="button"><%= submit_tag "Přihlásit" %></p>
 <% end %>

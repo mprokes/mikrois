@@ -1,4 +1,9 @@
-<h1>Poslední změny</h1>
+<div class="page-header">
+  <h1>Poslední události
+    <small> Co Vám neuniklo o vašich partnerech</small>
+  </h1>
+</div>
+
 <ul>
   <% @news_list.each do |n| %>
       <% next unless n.owner %>
@@ -8,10 +13,10 @@
                 ič: <%= n.owner.ic rescue '' %>
             <% if n.action == 'create' %>
                 <span class="label"><%= n.owner.name rescue '' %></span>:
-                Přidána do kontrol
+                Přidána mezi kontrolované
             <% else %>
                 <span class="label label-info"><%= n.owner.name rescue '' %></span>:
-                Změny:
+                Změny v evidenci:
                 <%= n.audited_changes  %>
             <% end %>
           </li>

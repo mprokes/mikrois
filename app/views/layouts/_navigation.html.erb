@@ -9,16 +9,16 @@
         <%= link_to 'Změny', audits_news_path %>
       </li>
       <li>
-        <%= link_to("Logout #{current_user.email}", log_out_path) %>
+        <%= link_to("Odhlásit #{current_user.email}", log_out_path) %>
       </li>
   <% else %>
       <li>
-        <%= link_to('Login', log_in_path)  %>
+        <%= link_to('Přihlásit se', log_in_path)  %>
       </li>
   <% end %>
   <% unless current_user %>
       <li>
-        <%= link_to('Sign up', sign_up_path)  %>
+        <%= link_to('Zaregistrovat se', sign_up_path)  %>
       </li>
   <% end %>
 </ul>

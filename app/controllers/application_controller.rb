@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class ApplicationController < ActionController::Base
   protect_from_forgery
   helper_method :current_user
@@ -25,7 +26,7 @@ class ApplicationController < ActionController::Base
 
   def authorize
     unless current_user
-      flash[:error] = "unauthorized access"
+      flash[:error] = "Neoprávněný přístup"
       redirect_to log_in_path
       false
     end
