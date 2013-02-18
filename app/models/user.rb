@@ -10,4 +10,5 @@ class User < ActiveRecord::Base
   has_many :watchdogs
   has_many :ares_registrations, :through => :watchdogs
 
+
 end

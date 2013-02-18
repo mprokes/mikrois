@@ -6,4 +6,12 @@ class Notifier < ActionMailer::Base
     mail(:to => recipient.email,
          :bcc => ["michal@kropes.cz", "Michal Prokes <michal@kropes.cz>"])
   end
+
+  def ares_change(recipient,ares)
+    @user = recipient
+    @ares = ares
+    mail(:to => recipient.email,
+         :bcc => ["michal@kropes.cz", "Michal Prokes <michal@kropes.cz>"]
+         )
+  end
 end

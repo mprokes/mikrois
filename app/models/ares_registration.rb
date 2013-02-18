@@ -98,4 +98,8 @@ class AresRegistration < ActiveRecord::Base
 
   end
 
+  def changelog
+    audits.last.audited_changes
+  end
+
 end
