@@ -4,6 +4,8 @@ class AdisRegistration < ActiveRecord::Base
 
   after_initialize :init
 
+  CACHE_ENABLED = false
+
   XML_PATH = 'db/xml/adis'
   ADIS_URI = 'http://adisreg.mfcr.cz/cgi-bin/adis/idph/int_dp_prij.cgi?id=1&pocet=1&fu=&OK=+Search+&ZPRAC=RDPHI1&dic='
 
@@ -13,11 +15,15 @@ class AdisRegistration < ActiveRecord::Base
     end
   end
 
+  def updateFromNet
+    parseHtml(downloadHtml)
+  end
+
   def downloadHtml
     filename = XML_PATH+'/CZ'+dic.to_s+".html"
 
     # TODO: Uplne pryc cache, ale hlidat limity
-    unless File.exists?(filename)
+    unless CACHE_ENABLED and File.exists?(filename)
       puts "Downloading dic "+dic.to_s+" from ADIS registr"
       File.open(filename, 'w') do |f|
         uri = URI(ADIS_URI+dic.to_s)

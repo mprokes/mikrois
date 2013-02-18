@@ -2,6 +2,8 @@ class AresRegistration < ActiveRecord::Base
   attr_accessible :cz_payer, :name, :vat_number, :ic, :downloaded_at, :actual_at, :reg_insolv, :reg_upadce
   after_initialize :init
 
+  CACHE_ENABLED = false
+
   XML_PATH = 'db/xml/ares'
 
   ARES_VERSION="1.0.3"
@@ -19,9 +21,9 @@ class AresRegistration < ActiveRecord::Base
   ZKR_NAZEV_ULICE='NU'
 
   def init
-    #if self.downloaded_at.nil? or self.actual_at.nil? or self.downloaded_at < DateTime.current.advance(:hours => -24)
+    if self.downloaded_at.nil?
       parseXml(downloadXml)
-    #end
+    end
   end
 
   def cz_payer?
@@ -32,13 +34,17 @@ class AresRegistration < ActiveRecord::Base
     cz_payer? ? AdisRegistration.find_by_dic(dic) : nil
   end
 
+  def updateFromNet
+    parseXml(downloadXml)
+  end
+
 
   def downloadXml
 
     filename = XML_PATH+'/basic_'+ic.to_s+".xml"
 
     # TODO: Uplne pryc cache, ale hlidat limity
-    unless File.exists?(filename)
+    unless CACHE_ENABLED and File.exists?(filename)
       puts "Downloading ic #{ic.to_s} from ARES registr"
       File.open(filename, 'w') do |f|
         uri = URI("#{ARES_URI_BASIC}?ver=#{ARES_VERSION}&ico=#{ic.to_s}")
