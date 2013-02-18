@@ -3,7 +3,10 @@
 
   <% if current_user %>
       <li>
-        <%= link_to 'Přehled', vats_list_path %>
+        <%= link_to 'Moje firmy', vats_list_path %>
+      </li>
+      <li>
+        <%= link_to 'Změny', audits_news_path %>
       </li>
       <li>
         <%= link_to("Logout #{current_user.email}", log_out_path) %>

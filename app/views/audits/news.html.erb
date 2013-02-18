@@ -1,0 +1,24 @@
+<h1>Poslední změny</h1>
+<ul>
+  <% @news_list.each do |n| %>
+      <% next unless n.owner %>
+      <% if n.owner_type == 'AresRegistration' %>
+          <li>
+            <%= I18n.l n.created_at %>
+                ič: <%= n.owner.ic rescue '' %>
+            <% if n.action == 'create' %>
+                <span class="label"><%= n.owner.name rescue '' %></span>:
+                Přidána do kontrol
+            <% else %>
+                <span class="label label-info"><%= n.owner.name rescue '' %></span>:
+                Změny:
+                <%= n.audited_changes  %>
+            <% end %>
+          </li>
+
+
+          </li>
+      <% end %>
+  <% end %>
+</ul>
+

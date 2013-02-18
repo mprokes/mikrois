@@ -28,6 +28,8 @@ gem 'nokogiri'
 # cron jobs
 gem 'whenever', :require => false
 
+# change audit
+gem 'auditor'
 
 
 gem 'jquery-rails'

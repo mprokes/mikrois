@@ -1,10 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  ic: 1
-  name: MyString
-  vat_number: MyString
-  cz_payer: 
+  ic: 666
+  name: Firma
+  vat_number: nil
+  cz_payer: false
 
 two:
   ic: 1

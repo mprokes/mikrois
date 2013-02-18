@@ -8,11 +8,15 @@ class VatsController < ApplicationController
     if @ic
       redirect_to :action => :show, :id => @ic
     end
+
+    @audits = Audit.all
+
+
   end
 
   def list
     authorize
-    @alist = current_user ? current_user.ares_registrations : AresRegistration.all
+    @alist = current_user ? current_user.ares_registrations.recent : []
   end
 
 
@@ -67,7 +71,9 @@ class VatsController < ApplicationController
   def ic_valid?
     puts "kontrola ic $(@ic)"
     return false unless @ic
-    ic_string = sprintf "%08s", @ic.to_s.strip
+
+    @ic.to_s.gsub!(/[^0-9]/, '')
+    ic_string = sprintf "%08s", @ic
 
     check = 0
     digits = ic_string.chars.to_a

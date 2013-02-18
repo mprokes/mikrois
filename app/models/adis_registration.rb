@@ -10,8 +10,9 @@ class AdisRegistration < ActiveRecord::Base
   ADIS_URI = 'http://adisreg.mfcr.cz/cgi-bin/adis/idph/int_dp_prij.cgi?id=1&pocet=1&fu=&OK=+Search+&ZPRAC=RDPHI1&dic='
 
   def init
-    if self.downloaded_at.nil? or self.actual_at.nil? or self.downloaded_at < DateTime.current.advance(:hours => -24)
+    if self.downloaded_at.nil?
       parseHtml(downloadHtml)
+      self.save
     end
   end
 

@@ -1,6 +1,14 @@
 class AresRegistration < ActiveRecord::Base
+  audit!(:create, :update, :only => [:cz_payer, :name, :vat_number, :dic, :reg_insolv, :reg_upadce] ) { |model, user, action| "Ares modified by #{ user.email rescue 'anonymous@mikrois.cz' }" }
+
   attr_accessible :cz_payer, :name, :vat_number, :ic, :downloaded_at, :actual_at, :reg_insolv, :reg_upadce
+  validates :ic, :presence => true, :uniqueness => true
+
   after_initialize :init
+  before_save :before_save
+
+
+  scope :recent, where("actual_at IS NOT NULL").order("reg_insolv DESC, reg_upadce DESC, updated_at DESC")
 
   CACHE_ENABLED = false
 
@@ -26,7 +34,14 @@ class AresRegistration < ActiveRecord::Base
     end
   end
 
+  def before_save
+    if self.name.nil?
+      self.downloaded_at.advance(:month => +1)
+    end
+  end
+
   def cz_payer?
+    return nil unless cz_payer
     cz_payer.match(/^(A|S)$/)!=nil
   end
 
@@ -35,7 +50,7 @@ class AresRegistration < ActiveRecord::Base
   end
 
   def updateFromNet
-    parseXml(downloadXml)
+    parseXml(downloadXml) if self.downloaded_at.nil?
   end
 
 
@@ -71,7 +86,9 @@ class AresRegistration < ActiveRecord::Base
         logger.debug(registers)
         self.cz_payer = registers[:DPH]
 
-        self.dic = answer.xpath("D:DIC").first.content.match(/^(CZ)([0-9]+)$/)[2].to_i rescue nil if registers[:DPH]=='A'
+        if registers[:DPH]=='A'
+          self.dic = answer.xpath("D:DIC").first.content.match(/^(CZ)([0-9]+)$/)[2].to_i rescue nil
+        end
         if registers[:INSOLV]=='E' or registers[:INSOLV]=='F'
           self.reg_insolv = true
         end

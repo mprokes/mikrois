@@ -1,12 +1,19 @@
 # encoding: UTF-8
 <div class="hero-unit">
-  <h1>Zadejte IC firmy k prověření</h1>
-  <p>Tagline</p>
+  <h1>Zadejte ič k prověření</h1>
+  <p>Zkontrolujeme zadanou firmu či podnikatele.</p>
+  <p>Zejména zjistíme, zda není v registru nespolehlivých plátců dph.
+  <% if current_user %>
+    Mimo to, že se ihned dozvíte výsledek, budeme za Vás denně toto ič prověřovat a jakékoli důležité změny zašleme na <%= current_user.email %>.
+  <% else %>
+    Ihned zjistíte, zda nesete odpovědnost za nezaplacené daně tímto subjektem. Pokud nám dáte emailovou adresu, budeme pro Vás denně tento subjekt hlídat a případné změny zašleme na email.
+  <% end %>
+  </p>
 
-    <%= form_tag vats_path do |f| %>
+    <%= form_tag vats_path, :method=>:post do |f| %>
     <a class="btn btn-primary btn-large">
 
-          <input name="id" placeholder="Zadejte ič k ověření">
+          <input name="id" placeholder="české ič k ověření">
           <%= submit_tag :Ověřit %>
 
     </a>

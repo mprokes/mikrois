@@ -1,0 +1,17 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+cs:
+  hello: "Hello world"
+  date:
+    formats:
+      default: "%d.%m.%Y"
+
+  time:
+    formats:
+      default: "%H:%M"
+
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "Neúplný záznam. Nelze uložit."

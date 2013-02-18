@@ -1,11 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  dic: 
-  listedAsUnreliable: 
-  lastCheck: 2013-02-16 15:54:27
+  dic: 1
 
 two:
-  dic: 
-  listedAsUnreliable: 
-  lastCheck: 2013-02-16 15:54:27
+  dic: 2
